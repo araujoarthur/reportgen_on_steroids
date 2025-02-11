@@ -1,0 +1,18 @@
+{
+    "databases": {
+        "consulta": {
+            "username":"",
+            "password":"",
+            "address":"",
+            "port":3050,
+            "path":""
+        },
+        "tcar": {
+            "username":"",
+            "password":"",
+            "address":"",
+            "port":3050,
+            "path":""
+        }
+    }
+}
