@@ -5,9 +5,22 @@ from config.result_codes import ResultCodes
 
 class SimpleReport(BaseReport):
     """
-        Base for a simple report that does not manipulate the dataframe.
+        A class used to generate a simple report that does not manipulate the dataframe.
+        
+        Attributes
+        ----------
+        config : dict, optional
+            Configuration settings for the report (default is None)
+        
+        Methods
+        -------
+        prepare_query()
+            Prepares the query to be executed. Child class must implement it to prepare its own query.
+        generate() -> ReportResult
+            Generates the report by connecting to the database, executing the query, transforming the result into a dataframe, and saving it to an Excel file.
+        feed(data: dict)
+            Feeds data into the report generator. Child class must extend it to feed the remaining data.
     """
-
     def __init__(self, config=None):
         super().__init__()
         self.config = config
