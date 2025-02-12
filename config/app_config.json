@@ -3,14 +3,14 @@
         "consulta": {
             "username":"",
             "password":"",
-            "address":"",
+            "host":"",
             "port":3050,
             "path":""
         },
         "tcar": {
             "username":"",
             "password":"",
-            "address":"",
+            "host":"",
             "port":3050,
             "path":""
         }

@@ -1,4 +1,10 @@
 build/*
 dist/*
-__pycache__/*
+__pycache__/
 **/__pycache__/*
+/app_config.json
+*.dll
+*.xlsx
+
+
+!config/app_config.json

@@ -1,0 +1,10 @@
+from enum import Enum
+
+class ResultCodes(Enum):
+    SUCCESS = 0x0
+    NO_QUERY_PROVIDED = 0x1
+    FAILED_TO_CONNECT = 0x2
+    NO_FILENAME_PROVIDED = 0x3
+    FAILED_QUERY = 0x4
+    FAILED_DATAFRAME_GENERATION = 0x5
+    FAILED_TO_SAVE_EXCEL = 0x6
