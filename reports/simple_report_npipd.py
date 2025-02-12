@@ -1,4 +1,18 @@
+"""
+This module defines the SimpleNoPurchaseInPastDays class, which is a specialized report for identifying customers
+who have not made a purchase in the past N days. It inherits from the SimpleReport class and implements the 
+necessary methods to prepare and execute the query for this specific report.
+
+Classes:
+    SimpleNoPurchaseInPastDays: A report class for customers with no purchases in the past N days.
+Methods:
+    __init__(self, config: dict): Initializes the report with the given configuration.
+    prepare_query(self): Prepares the SQL query to be executed for the report.
+    feed(self, data: dict): Feeds data into the report and validates the input.
+"""
+
 from .simple_report import SimpleReport
+
 
 class SimpleNoPurchaseInPastDays(SimpleReport):
     """

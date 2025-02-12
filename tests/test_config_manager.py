@@ -1,6 +1,6 @@
 import unittest
 from unittest.mock import patch, mock_open, MagicMock
-from config.config_manager import ConfigManager, Result, ResultDict,CONFIG_NAME
+from report_generator.config.config_manager import ConfigManager, Result, ResultDict,CONFIG_NAME
 import os
 import json
 

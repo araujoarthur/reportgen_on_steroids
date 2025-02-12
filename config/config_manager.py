@@ -1,3 +1,25 @@
+"""
+This module provides the ConfigManager class, which is responsible for managing the configuration of the application.
+It includes methods for retrieving resource paths, creating default configuration files, and loading JSON configuration files.
+
+Classes:
+--------
+ConfigManager:
+    A class that manages the configuration of the application.
+    Methods:
+    --------
+    get_resource_path(relative_path: str) -> str:
+        Returns the absolute path to a resource given its relative path, handling both PyInstaller executable and raw script scenarios.
+    
+    _create_default(dest: str) -> Result:
+    
+    _load_json(file_path: str) -> ResultDict:
+    
+    load_configuration(file_path: str) -> ResultDict:
+        Loads the configuration from the specified file path. If the configuration file does not exist, it creates a default configuration file.
+
+"""
+
 import os
 import sys
 import shutil

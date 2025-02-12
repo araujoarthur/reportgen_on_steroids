@@ -1,7 +1,21 @@
+"""
+This module contains the SimpleReport class, which is used to generate a simple report that does not manipulate the dataframe.
+The SimpleReport class inherits from the BaseReport class and provides implementations for preparing a query, generating a report,
+and feeding data into the report generator.
+Classes:
+    SimpleReport: A class used to generate a simple report by executing a database query, transforming the result into a dataframe,
+Attributes:
+    None
+Methods:
+    None
+"""
+
 import os
 from .base_report import BaseReport, ReportResult
-from db.database import Database
-from config.result_codes import ResultCodes
+from report_generator.db.database import Database
+from report_generator.config.result_codes import ResultCodes
+
+
 
 class SimpleReport(BaseReport):
     """

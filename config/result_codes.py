@@ -1,3 +1,10 @@
+"""
+This module defines the ResultCodes enumeration, which represents various result codes used throughout the repository.
+
+Classes:
+    ResultCodes (Enum): An enumeration of result codes indicating the outcome of various operations.
+"""
+
 from enum import Enum
 
 class ResultCodes(Enum):

@@ -1,7 +1,18 @@
+"""
+This module defines the BaseReport class, an abstract base class for generating reports.
+It provides common functionality and enforces the implementation of specific methods
+
+Classes:
+    BaseReport: An abstract base class for generating reports.
+Typings:
+    ReportResult: A tuple containing a boolean, an integer, and an Exception.
+    DataFrameResult: A tuple containing a pandas DataFrame and an Exception.
+"""
+
 from typing import Tuple
 import os
 import pandas as pd
-from config.config_manager import Result
+from report_generator.config.config_manager import Result
 
 type ReportResult = Tuple[bool, int, Exception] 
 type DataFrameResult = Tuple[pd.DataFrame, Exception]

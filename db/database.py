@@ -1,6 +1,37 @@
+"""
+This module provides a class to manage database access using the Firebird database.
+
+Classes:
+    Database: A class to manage database connections and execute queries.
+    
+Typings:
+    QueryResult: A type alias for a tuple containing query results, column names, and an exception.
+
+Usage:
+    The Database class can be used to establish a connection to a Firebird database, execute SQL queries, 
+    and handle the results. The class ensures that the database connection is properly closed when the 
+    instance is destroyed.
+    
+Example:
+    config = {
+        "host": "localhost",
+        "port": 3050,
+        "path": "/path/to/database.fdb",
+        "username": "sysdba",
+        "password": "masterkey"
+    }
+    db = Database(config)
+    result = db.connect()
+    if result[0]:
+        query_result = db.execute_query("SELECT * FROM my_table")
+        print(query_result)
+    else:
+        print(f"Failed to connect: {result[1]}")
+"""
+
 import fdb
 import os
-from config.config_manager import Result
+from report_generator.config.config_manager import Result
 from typing import Any, Tuple, List
 
 type QueryResult = Tuple[Any, List, Exception]
