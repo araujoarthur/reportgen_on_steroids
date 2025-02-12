@@ -1,18 +1,22 @@
 """
 This module provides a class to manage database access using the Firebird database.
 
-Classes:
-    Database: A class to manage database connections and execute queries.
-    
-Typings:
-    QueryResult: A type alias for a tuple containing query results, column names, and an exception.
+Classes
+-------
+- **Database**: A class to manage database connections and execute queries.
 
-Usage:
-    The Database class can be used to establish a connection to a Firebird database, execute SQL queries, 
-    and handle the results. The class ensures that the database connection is properly closed when the 
-    instance is destroyed.
-    
-Example:
+Typings
+-------
+- **QueryResult**: A type alias for a tuple containing query results, column names, and an exception.
+
+Usage
+-----
+The `Database` class can be used to establish a connection to a Firebird database, execute SQL queries, and handle the results. The class ensures that the database connection is properly closed when the instance is destroyed.
+
+Example
+-------
+::
+
     config = {
         "host": "localhost",
         "port": 3050,
@@ -20,6 +24,7 @@ Example:
         "username": "sysdba",
         "password": "masterkey"
     }
+
     db = Database(config)
     result = db.connect()
     if result[0]:
@@ -28,6 +33,7 @@ Example:
     else:
         print(f"Failed to connect: {result[1]}")
 """
+
 
 import fdb
 import os
@@ -39,25 +45,20 @@ type QueryResult = Tuple[Any, List, Exception]
 # TO-DO: Switch to firebird-driver https://pypi.org/project/firebird-driver/
 class Database:
     """
-        Class to manage database access.
+    Class to manage database access.
 
-        Attributes:
-            _connection (fdb.Connection): The connection object to the database.
-            connected (bool): A flag indicating whether the database is connected.
-            _config (dict): The configuration dictionary for the database connection.
-            fbclient_lib (str): The path to the Firebird client library.
-        
-        Methods:
-            __init__(config: dict):
-                Initializes the Database class with the specified configuration.
-            __del__():
-                Destructor that ensures the database connection is closed.
-            connect() -> Result:
-                Establishes a connection to the database.
-            execute_query(query: str, params: Optional[tuple] = None) -> QueryResult:
-                Executes a query on the database.
+    Attributes:
+        _connection (fdb.Connection): The connection object to the database.
+        connected (bool): Indicates whether the database is connected.
+        _config (dict): Configuration dictionary for the database connection.
+        fbclient_lib (str): Path to the Firebird client library.
+
+    Methods:
+        __init__(config: dict): Initializes the Database class with the specified configuration.
+        __del__(): Destructor that ensures the database connection is closed.
+        connect() -> Result: Establishes a connection to the database.
+        execute_query(query: str, params: Optional[tuple] = None) -> QueryResult: Executes a query on the database.
     """
-
     
     def __init__(self, config:dict):
         """
