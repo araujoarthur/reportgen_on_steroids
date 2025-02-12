@@ -28,10 +28,7 @@ In the future I plan to introduce an external domain-specific language to make t
 ## Usage
 
 1. Configure the database connection in the `config.json` file.
-2. Run the report generator:
-   ```sh
-   python generate_report.py
-   ```
+... TO-DO
 
 ## Configuration
 
