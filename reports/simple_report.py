@@ -22,22 +22,46 @@ class SimpleReport(BaseReport):
             Feeds data into the report generator. Child class must extend it to feed the remaining data.
     """
     def __init__(self, config=None):
+        """
+            Initializes the SimpleReport instance.
+        
+            Args:
+                config (dict, optional): Configuration dictionary for the report. Defaults to None.
+        """
+
         super().__init__()
         self.config = config
 
 
     def prepare_query(self):
         """
-            Prepares tge qyert to be executed
-            Child class must implement it to prepare its own query.
+            Prepares the query to be executed.
+            Child classes must implement this method to prepare their own specific queries.
         """
         pass
 
 
     def generate(self) -> ReportResult:
         """
-            Generates the Report
+            Generates a report by executing a database query, transforming the result into a dataframe,
+            and saving it to an Excel file.
+           
+            Returns:
+                ReportResult: A tuple containing:
+                    - A boolean indicating success or failure.
+                    - A result code from the ResultCodes enum.
+                    - An error message if an error occurred, otherwise None.
+            
+            Possible result codes:
+                - ResultCodes.FAILED_TO_CONNECT: Failed to connect to the database.
+                - ResultCodes.NO_QUERY_PROVIDED: No query was provided.
+                - ResultCodes.NO_FILENAME_PROVIDED: No filename was provided.
+                - ResultCodes.FAILED_QUERY: Failed to execute the query.
+                - ResultCodes.FAILED_DATAFRAME_GENERATION: Failed to generate the dataframe.
+                - ResultCodes.FAILED_TO_SAVE_EXCEL: Failed to save the Excel file.
+                - ResultCodes.SUCCESS: Report generation was successful.
         """
+        
         db = Database(self.config)
         
         _, err = db.connect()
@@ -72,8 +96,14 @@ class SimpleReport(BaseReport):
 
     def feed(self, data: dict):
         """
-            Feeds data into the report generator.
-            Child class must extend it to feed the remaining data.
+            Processes the input data dictionary and sets the instance attributes.
+
+            Args:
+                data (dict): A dictionary containing the following keys:
+                    - "name" (str): The name of the file. This key is required.
+                    - "output_path" (str, optional): The output path for the file. If not provided, the current directory is used.
+            Raises:
+                Exception: If the "name" key is not present in the data dictionary.
         """
         if not ("name" in data):
             raise Exception("Must pass a filename")
